@@ -3,9 +3,6 @@ import {
 } from 'react-native';
 import colors from '../../assets/colors'
 
-const boxSize = 200;
-const boxSizeDetail = 95;
-
 export default StyleSheet.create({
   container: {
     backgroundColor: colors.primary_color,
@@ -13,9 +10,14 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  loadingText: {
-    color: colors.text_light,
+  loadingBox: {
     position: 'absolute',
-    bottom: 30
+    bottom: 30,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  loadingText: {
+    marginLeft: 20,
+    color: colors.text_light,
   }
 }) 

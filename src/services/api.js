@@ -1,16 +1,17 @@
 import axios from 'axios';
+import url from '../assets/url'
 
 const api = axios.create({
-  baseURL: process.env.URL_API + '/'
+  baseURL: url.server + '/',
+  headers: {
+    'Content-Type': 'application/json'
+  }
 });
 
 //Antes de enviar
 api.interceptors.request.use(async (request) => {
-  console.log('request');
-
-  request.headers.Authorization = 'Bearer ' + token;
-
-  console.log(request.data);
+  request.headers['X-Riot-Token'] = 'RGAPI-59d67a1a-9d78-48a4-bf25-2cd54793a555'
+  console.log('request', request.data);
 
   return request;
 });
@@ -20,6 +21,7 @@ api.interceptors.response.use(async (response) => {
   console.log('response');
   return response
 }, async (err) => {
+  console.log('response erro');
   return Promise.reject(err.response);
 });
 

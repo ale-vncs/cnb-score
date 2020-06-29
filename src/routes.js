@@ -55,7 +55,10 @@ const stackStyle = {
 
 const mainStack = createStackNavigator({
   Main: {
-    screen: Main
+    screen: Main,
+    navigationOptions: {
+      headerShown: false
+    }
   },
   Detail: {
     screen: Details
