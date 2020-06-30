@@ -1,8 +1,6 @@
-import axios from 'axios'
-
 import lodash from 'lodash'
 import dataScore from '../assets/dataScore'
-import api from '../services/api'
+import api from './api'
 import AsyncStorage from '@react-native-community/async-storage'
 
 const lane = {
@@ -37,7 +35,6 @@ export default async (role, data, accountId) => {
   return Promise.all(
     temp.map(match => api.get(`/lol/match/v4/matches/${match.gameId}`))
   ).then(listDataMatch => {
-    console.log(listDataMatch)
     listDataMatch.map(({ data }) => {
       const gameDuration = data.gameDuration
       const participationId = data.participantIdentities.filter(part => part.player.accountId === accountId)[0].participantId
@@ -80,7 +77,6 @@ export default async (role, data, accountId) => {
     })
 
     listPoints.map(info => {
-      console.log(info, scoreInfo)
       let totalPoints = 0
 
       totalPoints += info.kills * scoreInfo.kill

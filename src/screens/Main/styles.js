@@ -29,7 +29,7 @@ export default StyleSheet.create({
     right: -5
   },
   headerBarLevelText: {
-    color: 'white',
+    color: color.text_light,
     fontSize: 10
   },
   headerBarText: {
@@ -50,7 +50,7 @@ export default StyleSheet.create({
     marginBottom: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: color.card_background
   },
   roleText: {
     fontSize: 18
@@ -59,7 +59,7 @@ export default StyleSheet.create({
     width: '80%',
     flex: 1,
     borderRadius: 10,
-    backgroundColor: 'white',
+    backgroundColor: color.card_background,
     elevation: 5,
     marginBottom: 20,
     padding: 15

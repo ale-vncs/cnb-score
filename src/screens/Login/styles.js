@@ -32,5 +32,29 @@ export default StyleSheet.create({
   btnText: {
     fontSize: 15,
     color: colors.text_light
+  },
+  recentContainer: {
+    position: 'absolute',
+    bottom: 20,
+    width: '80%',
+    height: '30%'
+  },
+  recentUserTitle: {
+    fontSize: 18,
+    color: 'white',
+    textAlign: 'center'
+  },
+  recentUserButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 40,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(255,255,255,0.2)',
+    paddingHorizontal: 10
+  },
+  recentUserText: {
+    fontSize: 15,
+    color: 'white'
   }
 }) 

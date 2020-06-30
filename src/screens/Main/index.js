@@ -7,7 +7,8 @@ import {
   Image,
   TouchableOpacity,
   ActivityIndicator,
-  ScrollView
+  ScrollView,
+  Picker
 } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu'
@@ -15,7 +16,7 @@ import url from '../../assets/url'
 import classes from './styles'
 import colors from '../../assets/colors'
 import api from '../../services/api'
-import prepareData from '../../services/prepareData'
+import calculatePoints from '../../services/calculatePoints'
 
 import Fa from 'react-native-vector-icons/FontAwesome5'
 
@@ -48,12 +49,11 @@ export default ({ navigation }) => {
         const { data } = await api.get(`/lol/match/v4/matchlists/by-account/${userData.accountId}?${query}`)
 
         if (data) {
-          console.log(data)
           let {
             totalPoints,
             best,
             other
-          } = await prepareData(role, data, userData.accountId)
+          } = await calculatePoints(role, data, userData.accountId)
 
           setTotalPoints(totalPoints)
           setOtherMatches(other)

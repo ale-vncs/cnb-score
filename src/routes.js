@@ -54,6 +54,12 @@ const stackStyle = {
 }
 
 const mainStack = createStackNavigator({
+  Login: {
+    screen: Login,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
   Main: {
     screen: Main,
     navigationOptions: {
@@ -69,12 +75,6 @@ export default createAppContainer(
   createSwitchNavigator({
     SplasScreen: {
       screen: SplasScreen,
-      navigationOptions: {
-        headerShown: false,
-      },
-    },
-    Login: {
-      screen: Login,
       navigationOptions: {
         headerShown: false,
       },
