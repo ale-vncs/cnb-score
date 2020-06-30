@@ -36,17 +36,18 @@ export default ({ navigation }) => {
     }
   }
 
-  const onSubmit = async () => {
-    const { data } = await api.get(`/lol/summoner/v4/summoners/by-name/${user}`)
+  const onSubmit = async (name = null) => {
+    const nickname = name ? name : user
+    const { data } = await api.get(`/lol/summoner/v4/summoners/by-name/${nickname}`)
     if (data) {
       //await AsyncStorage.removeItem('recentUser')
       let recentList = await AsyncStorage.getItem('recentUser')
       if (recentList) {
         const list = new Set(JSON.parse(recentList))
-        list.add(user)
+        list.add(nickname)
         await AsyncStorage.setItem('recentUser', JSON.stringify([...list]))
       } else {
-        await AsyncStorage.setItem('recentUser', JSON.stringify([user]))
+        await AsyncStorage.setItem('recentUser', JSON.stringify([nickname]))
       }
       await AsyncStorage.setItem('accountId', JSON.stringify(data))
       navigation.navigate('Main')
@@ -55,7 +56,7 @@ export default ({ navigation }) => {
 
   const removeRecent = async (index) => {
     let temp = recentUser
-    temp = temp.slice(1, index)
+    temp.splice(index, 1)
     setRecentUser([...temp])
     await AsyncStorage.setItem('recentUser', JSON.stringify(temp))
   }
@@ -83,7 +84,7 @@ export default ({ navigation }) => {
       />
       <TouchableOpacity
         style={styles.btnLogin}
-        onPress={onSubmit}
+        onPress={() => onSubmit()}
       >
         <Text style={styles.btnText}>Buscar</Text>
       </TouchableOpacity>
@@ -96,7 +97,9 @@ export default ({ navigation }) => {
             <ScrollView>
               {recentUser.map((user, index) => (
                 <View key={user} style={styles.recentUserButton}>
-                  <TouchableOpacity style={{ flex: 1 }} >
+                  <TouchableOpacity style={{ flex: 1 }} onPress={() => {
+                    onSubmit(user)
+                  }}>
                     <Text style={styles.recentUserText}>{user}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => removeRecent(index)}>
