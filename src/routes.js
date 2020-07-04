@@ -67,7 +67,10 @@ const mainStack = createStackNavigator({
     }
   },
   Detail: {
-    screen: Details
+    screen: Details,
+    navigationOptions: {
+      headerShown: false
+    }
   }
 })
 

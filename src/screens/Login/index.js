@@ -40,7 +40,6 @@ export default ({ navigation }) => {
     const nickname = name ? name : user
     const { data } = await api.get(`/lol/summoner/v4/summoners/by-name/${nickname}`)
     if (data) {
-      //await AsyncStorage.removeItem('recentUser')
       let recentList = await AsyncStorage.getItem('recentUser')
       if (recentList) {
         const list = new Set(JSON.parse(recentList))

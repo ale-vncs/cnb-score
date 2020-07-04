@@ -108,7 +108,7 @@ export default ({ navigation }) => {
                 <TouchableOpacity
                   key={index}
                   style={classes.boxMatchButton}
-                  onPress={() => console.log(mtc.championName)}
+                  onPress={() => navigation.navigate('Detail', { data: mtc })}
                 >
                   <View style={classes.boxMatchContainerLeft}>
                     <View style={{ ...classes.boxMatchStatus, backgroundColor: (mtc.win ? '#49E296' : '#FF5858') }} />
@@ -133,7 +133,7 @@ export default ({ navigation }) => {
               {otherMatches.map(mtc => (
                 <TouchableOpacity
                   style={classes.boxMatchButton}
-                  onPress={() => console.log(mtc.championName)}
+                  onPress={() => navigation.navigate('Detail', { data: mtc })}
                 >
                   <View style={classes.boxMatchContainerLeft}>
                     <View style={{ ...classes.boxMatchStatus, backgroundColor: (mtc.win ? '#49E296' : '#FF5858') }} />

@@ -22,7 +22,7 @@ export default ({ navigation }) => {
   }, [])
 
   useEffect(() => {
-    if (appIsReady) setTimeout(() => navigation.navigate('Login'), 500)
+    if (appIsReady) setTimeout(() => navigation.navigate('Detail'), 500)
   }, [appIsReady])
 
   const getChampionData = async () => {
@@ -62,7 +62,7 @@ export default ({ navigation }) => {
 
   const prepareResources = async () => {
     await getChampionData()
-    await getAllListCnb()
+    //await getAllListCnb()
     //await prefetchImage()
     setInfoMsg('Tudo completo :)')
     setAppIsReady(true)
